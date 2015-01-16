@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from models import *
 from rest_framework import serializers
 
+from models import ClientUser
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -16,13 +17,13 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 class ClientUserSerializer(serializers.HyperlinkedModelSerializer):
 	class Meta:
 		model = ClientUser
-		fields = ('url', 
-			'username', 
-			'email', 
-			'password', 
-			'rating', 
-			'photo', 
-			'date_registration', 
+		fields = ('url',
+			'username',
+			'email',
+			'password',
+			'rating',
+			'photo',
+			'date_registration',
 			'favourite_drivers'
 			)
 

@@ -1,13 +1,18 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+#from views import get_all_locations
+
 
 class Location(models.Model):
-	x = models.FloatField()
-	y = models.FloatField()
-	city = models.CharField(max_length = 50)
-	street = models.CharField(max_length = 50)
-	building = models.CharField(max_length = 5)
+	x = models.FloatField(default = 0, blank = True)
+	y = models.FloatField(default = 0, blank = True)
+	city = models.CharField(max_length = 50, default = '', blank = True)
+	street = models.CharField(max_length = 50, default = '', blank = True)
+	building = models.CharField(max_length = 5, default = '', blank = True)
+
+
+#locations = sorted((item, item) for item in get_all_locations())
 
 
 class DriverUser(User):
@@ -20,7 +25,8 @@ class DriverUser(User):
 	about_me = models.TextField()
 	coefficient_congestion = models.FloatField(default = 1)
 	state = models.IntegerField()
-	location = models.OneToOneField(Location)
+	location = models.OneToOneField(Location)#, choices = locations, default = locations[0])
+	date_registration = models.DateTimeField(auto_now_add=True)
 	rating = models.IntegerField(default = 0)
 
 
