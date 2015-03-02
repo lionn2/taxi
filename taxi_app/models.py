@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+import datetime
 
 #from views import get_all_locations
 
@@ -15,19 +16,28 @@ class Location(models.Model):
 #locations = sorted((item, item) for item in get_all_locations())
 
 
+class AddService(models.Model):
+	conditioner = models.BooleanField(default = False)
+	type_salon = models.IntegerField(default = 0)
+	place_from_things = models.BooleanField(default = False)
+	count_places = models.IntegerField(default = 4)
+
+
 class DriverUser(User):
 	photo_car = models.ImageField(blank = True)
 	photo_driver_license = models.ImageField(blank = True)
 	photo_car_license = models.ImageField(blank = True)
 	rate_min = models.IntegerField()
+	rate_without_client = models.IntegerField(default=0)
 	rate_km_hightway = models.IntegerField()
 	rate_km_city = models.IntegerField()
 	about_me = models.TextField()
 	coefficient_congestion = models.FloatField(default = 1)
 	state = models.IntegerField()
 	location = models.OneToOneField(Location)#, choices = locations, default = locations[0])
-	date_registration = models.DateTimeField(auto_now_add=True)
+	date_registration = models.DateTimeField(auto_now_add=True, default = datetime.datetime.now)
 	rating = models.IntegerField(default = 0)
+	add_service = models.OneToOneField(AddService, default = None)
 
 
 class ClientUser(User):
@@ -72,6 +82,7 @@ class Order(models.Model):
 	is_fast = models.BooleanField(default = True)
 	driver = models.ForeignKey(DriverUser)
 	client = models.ForeignKey(ClientUser)
+	add_service = models.OneToOneField(AddService, default=None)
 
 
 class Comments(models.Model):
@@ -80,3 +91,4 @@ class Comments(models.Model):
 	whom = models.IntegerField()
 	date = models.DateTimeField(auto_now_add = True)
 	order = models.ForeignKey(Order)
+
