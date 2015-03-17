@@ -3,10 +3,11 @@
 <html>
 <head>
 	<title>test</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script lanaguage="JavaScript" type="text/javascript" src="{% static 'test.js' %}"></script>
 </head>
 <body>
-	<button id="get">Get SmTh</button>
+	<button id="get" onclick="getMethod()">Get SmTh</button>
 	{% csrf_token %}
 </body>
 </html>
