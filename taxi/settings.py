@@ -2,6 +2,7 @@ import os
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
 
 SECRET_KEY = 'u9-(ki83wo=0p=ptng58b0zdo_cw^%e%ml967=8si--2m)$mo2'
 
@@ -94,5 +95,5 @@ MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, 'static'),
 )
