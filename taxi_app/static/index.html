@@ -2,9 +2,10 @@
 <html>
 <head>
 	<title>test</title>
-	<script type="text/javascript" src="test.js"></script>
+	<script type="text/javascript" src="{% static 'test.js' %}"></script>
 </head>
 <body>
-	<button id="get" onclick="getMethod()">Get SmTh</button>
+	<button id="get" onclick="getMethod()">Get user</button>
+	{% csrf_token %}
 </body>
 </html>
