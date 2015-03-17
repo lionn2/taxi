@@ -1,11 +1,12 @@
 function getMethod () {
 	$.ajax({
 	  url: '/api/users/1',
-	  data: token,
+	  data: getToken(),
 	  type: 'GET',
 	  success: function(data) {
 	  	console.log(data);
-	  }
+	  },
+	  
 	});
 }
 
