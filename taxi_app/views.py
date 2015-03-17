@@ -6,6 +6,7 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
+from django.shortcuts import render
 
 import datetime
 
@@ -53,3 +54,6 @@ class ClientRatingViewSet(viewsets.ModelViewSet):
 class CommentsViewSet(viewsets.ModelViewSet):
 	queryset = Comments.objects.all()
 	serializer_class = CommentsSerializer
+
+def test(request):
+	return render(request, 'index.html')

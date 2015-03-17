@@ -1,6 +1,6 @@
 function getMethod () {
 	$.ajax({
-	  url: '/users/1',
+	  url: '/api/users/1',
 	  data: data,
 	  success: function(data) {
 	  	console.log(data);
