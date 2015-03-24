@@ -76,3 +76,6 @@ def route_data(request):
 #     def delete(self, request, *args, **kwargs):
 #         logout(request)
 #         return Response({})
+
+def sign_up(request):
+	return render(request, "Signup.html")
