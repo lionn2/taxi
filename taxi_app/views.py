@@ -7,7 +7,7 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
 from django.shortcuts import render
-
+import md5
 import datetime
 
 
@@ -55,14 +55,32 @@ class CommentsViewSet(viewsets.ModelViewSet):
 	queryset = Comments.objects.all()
 	serializer_class = CommentsSerializer
 
-def test(request):
-	return render(request, 'index.html')
-
 def show_map(request):
 	return render(request, 'map.html')
 
-def route_data(request):
-	return HttpResponse("ok")
-
 def sign_up(request):
 	return render(request, 'Signup.html')
+
+def logging(request):
+	username = request.POST['username']
+	try:
+		user = User.objects.get(username = username)
+		password = md5.md5(request.POST['password']).hexdigest()
+		if user.password == password:
+			user.is_authorized = True
+			user.save()
+			return HttpResponse("ok")
+		
+		else:
+			return HttpResponse("fail")
+	except:
+		return HttpResponse("fail")
+
+def logout(request):
+	try:
+		user = User.objects.get(username = request.POST['username'])
+		user.is_authorized = False
+		user.save()
+		return HttpResponse("ok")	
+	except:
+		return HttpResponse("fail")
