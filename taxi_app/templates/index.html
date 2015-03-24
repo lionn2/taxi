@@ -2,12 +2,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>test</title>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<script lanaguage="JavaScript" type="text/javascript" src="{% static 'test.js' %}"></script>
+	<title>Taxi</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
 </head>
 <body>
-	<button id="get" onclick="getMethod()">Get SmTh</button>
-	{% csrf_token %}
+{% include 'topmenu.html' %}
 </body>
 </html>
