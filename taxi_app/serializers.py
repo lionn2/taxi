@@ -1,8 +1,7 @@
 from django.contrib.auth.models import User
 from models import *
 from rest_framework import serializers
-
-from models import ClientUser
+import md5
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -23,9 +22,13 @@ class ClientUserSerializer(serializers.HyperlinkedModelSerializer):
 			'password',
 			'rating',
 			'photo',
-			'date_registration',
-			'favourite_drivers'
+			'date_registration'
 			)
+
+	def create(self, validated_data):
+	 	print validated_data
+	 	validated_data['password'] = md5.md5(validated_data['password']).hexdigest()
+	 	return ClientUser.objects.create(**validated_data)
 
 
 class DriverUserSerializer(serializers.HyperlinkedModelSerializer):
@@ -46,6 +49,11 @@ class DriverUserSerializer(serializers.HyperlinkedModelSerializer):
 			'location',
 			'rating'
 		)
+
+	def create(self, validated_data):
+	 	print validated_data
+	 	validated_data['password'] = md5.md5(validated_data['password']).hexdigest()
+	 	return ClientUser.objects.create(**validated_data)
 
 
 class LocationSerializer(serializers.HyperlinkedModelSerializer):

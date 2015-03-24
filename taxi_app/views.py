@@ -7,6 +7,7 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
 from django.shortcuts import render
+from django.contrib.auth import login, logout
 
 import datetime
 
@@ -63,3 +64,15 @@ def show_map(request):
 
 def route_data(request):
 	return HttpResponse("ok")
+
+
+# class AuthView(APIView):
+#     authentication_classes = (QuietBasicAuthentication,)
+ 
+#     def post(self, request, *args, **kwargs):
+#         login(request, request.user)
+#         return Response(ClientUserSerializer(request.user).data)
+ 
+#     def delete(self, request, *args, **kwargs):
+#         logout(request)
+#         return Response({})

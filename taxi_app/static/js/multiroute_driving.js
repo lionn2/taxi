@@ -98,7 +98,7 @@ function init () {
 
     // Сравним положение, вычисленное по ip пользователя и
     // положение, вычисленное средствами браузера.
-    geolocation.get({
+   /* geolocation.get({
         provider: 'yandex',
         mapStateAutoApply: true
     }).then(function (result) {
@@ -108,8 +108,11 @@ function init () {
             balloonContentBody: 'Мое местоположение'
         });
         myMap.geoObjects.add(result.geoObjects);
-    });
+    });*/
+    my_location_browser()
+}
 
+function my_location_browser() {
     geolocation.get({
         provider: 'browser',
         mapStateAutoApply: true
