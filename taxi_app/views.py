@@ -57,3 +57,9 @@ class CommentsViewSet(viewsets.ModelViewSet):
 
 def test(request):
 	return render(request, 'index.html')
+
+def show_map(request):
+	return render(request, 'map.html')
+
+def route_data(request):
+	return HttpResponse("ok")
