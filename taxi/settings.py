@@ -63,7 +63,7 @@ try:
 except:
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
+            'ENGINE': 'django.db.backends.mysql',
             'NAME': 'taxi',
             'USER': 'root',
             'PASSWORD': 'letsyk',

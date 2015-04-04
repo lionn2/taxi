@@ -38,6 +38,7 @@ class DriverUser(User):
 	date_registration = models.DateTimeField(auto_now_add=True, default = datetime.datetime.now)
 	rating = models.IntegerField(default = 0)
 	add_service = models.OneToOneField(AddService, default = None)
+	is_authorized = models.BooleanField(default = False)
 
 
 class ClientUser(User):
@@ -45,6 +46,7 @@ class ClientUser(User):
 	photo = models.ImageField(blank = True)
 	date_registration = models.DateTimeField(auto_now_add=True)
 	favourite_drivers = models.ManyToManyField(DriverUser)
+	is_authorized = models.BooleanField(default = False)
 
 
 class Statistic(models.Model):
@@ -91,4 +93,3 @@ class Comments(models.Model):
 	whom = models.IntegerField()
 	date = models.DateTimeField(auto_now_add = True)
 	order = models.ForeignKey(Order)
-
